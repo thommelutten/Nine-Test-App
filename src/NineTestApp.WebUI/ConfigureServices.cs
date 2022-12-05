@@ -1,10 +1,17 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Newtonsoft.Json.Linq;
+using NineTestApp.Application.Common.Interfaces;
+using NineTestApp.Infrastructure.Repositories;
 
 namespace NineTestApp.WebUI
 {
     public static class ConfigureServices
     {
+
+        public static IServiceCollection AddWebUIServices(this IServiceCollection services)
+        {
+            return services;
+        }
 
         public static void AddHealthCheckEndpoint(this IEndpointRouteBuilder endpoints)
         {
@@ -26,6 +33,7 @@ namespace NineTestApp.WebUI
             httpContext.Response.ContentType = "application/json";
 
             var json = new JObject(
+                new JProperty("Version", GetVersion()),
                 new JProperty("OverallStatus", result.Status.ToString()),
                 new JProperty("TotalChecksDuration", result.TotalDuration.TotalSeconds.ToString("0:0.00")),
                 new JProperty("DependencyHealthChecks", new JObject(result.Entries.Select(dicItem =>
@@ -39,6 +47,17 @@ namespace NineTestApp.WebUI
                     )))
                 );
             return httpContext.Response.WriteAsync(json.ToString(Newtonsoft.Json.Formatting.Indented));
+        }
+
+        private static string GetVersion()
+        {
+            if(File.Exists("version.txt"))
+            {
+                return File.ReadAllText("version.txt");
+            } else
+            {
+                return "Unable to read version";
+            }
         }
     }
 }

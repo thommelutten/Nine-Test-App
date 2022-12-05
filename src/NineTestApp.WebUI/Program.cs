@@ -4,7 +4,7 @@ using NineTestApp.WebUI;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.Services.AddApplicationServices();
+builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
 // Add services to the container.
 builder.Services.AddControllersWithViews();

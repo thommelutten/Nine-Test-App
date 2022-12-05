@@ -1,8 +1,29 @@
-﻿@{
+﻿@model NineTestApp.WebUI.Models.HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Nine Test App.</p>
+</div>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">HexCode</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var color in Model.Colors)
+            {
+                <tr>
+                    <td>@color.Name</td>
+                    <td>@color.HexCode</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

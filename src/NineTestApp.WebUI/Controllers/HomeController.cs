@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using NineTestApp.Application.Colors.Queries.GetColors;
 using NineTestApp.WebUI.Models;
 using System.Diagnostics;
 
@@ -7,15 +9,23 @@ namespace NineTestApp.WebUI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ISender _mediator;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ISender mediator)
         {
             _logger = logger;
+            _mediator = mediator;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var colors = await _mediator.Send(new GetColorsQuery());
+
+            var homeViewModel = new HomeViewModel()
+            {
+                Colors = colors
+            };
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()

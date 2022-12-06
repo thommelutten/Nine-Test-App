@@ -15,3 +15,8 @@ And tests can be run with
 ```
 dotnet test
 ```
+
+And published using
+```
+dotnet publish -C Release -O *OUTPUT_DIR*
+```

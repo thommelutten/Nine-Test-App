@@ -18,5 +18,5 @@ dotnet test
 
 And published using
 ```
-dotnet publish -C Release -O *OUTPUT_DIR*
+dotnet publish -c Release -o *OUTPUT_DIR*
 ```

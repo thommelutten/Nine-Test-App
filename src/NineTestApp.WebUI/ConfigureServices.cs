@@ -51,10 +51,11 @@ namespace NineTestApp.WebUI
 
         private static string GetVersion()
         {
-            if(File.Exists("version.txt"))
+            if (File.Exists("version.txt"))
             {
                 return File.ReadAllText("version.txt");
-            } else
+            }
+            else
             {
                 return "Unable to read version";
             }

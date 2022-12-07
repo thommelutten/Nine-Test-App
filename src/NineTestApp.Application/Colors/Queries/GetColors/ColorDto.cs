@@ -13,6 +13,7 @@ namespace NineTestApp.Application.Colors.Queries.GetColors
     {
         public string? Name { get; set; }
         public string? HexCode { get; set; }
+        public string? RGB { get; set; }
 
         public void Mapping(Profile profile)
         {

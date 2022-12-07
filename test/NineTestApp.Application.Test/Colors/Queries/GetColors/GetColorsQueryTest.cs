@@ -36,7 +36,8 @@ namespace NineTestApp.Application.Test.Colors.Queries.GetColors
                     new Color()
                     {
                         Name = "Purple",
-                        HexCode = "#800080"
+                        HexCode = "#800080",
+                        RGB = "128, 0, 128"
                     }
                 }));
 
@@ -50,6 +51,7 @@ namespace NineTestApp.Application.Test.Colors.Queries.GetColors
             {
                 Assert.That(result[0].Name, Is.EqualTo("Purple"));
                 Assert.That(result[0].HexCode, Is.EqualTo("#800080"));
+                Assert.That(result[0].RGB, Is.EqualTo("128, 0, 128"));
             });
         }
     }

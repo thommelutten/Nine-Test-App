@@ -17,17 +17,20 @@ namespace NineTestApp.Infrastructure.Repositories
                 new Color()
                 {
                     Name = "Red",
-                    HexCode = "#FF0000"
+                    HexCode = "#FF0000",
+                    RGB = "255, 0, 0"
                 },
                 new Color()
                 {
                     Name = "Blue",
-                    HexCode = "#0000FF"
+                    HexCode = "#0000FF",
+                    RGB = "0, 0, 255"
                 },
                 new Color()
                 {
                     Name = "Green",
-                    HexCode = "#008000"
+                    HexCode = "#008000",
+                    RGB = "0, 255, 0"
                 }
             });
         }

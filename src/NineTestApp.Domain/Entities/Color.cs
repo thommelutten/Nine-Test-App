@@ -4,5 +4,6 @@
     {
         public string? Name { get; set; }
         public string? HexCode { get; set; }
+        public string? RGB { get; set; }
     }
 }

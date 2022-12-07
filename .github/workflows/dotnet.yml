@@ -31,7 +31,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/NineTestApp'
+      run: dotnet publish src/NineTestApp.WebUI/ -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/NineTestApp'
     - name: 'Append Version Number'
       run: echo  ${{ github.run_number }} - ${{ github.sha }} >> '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/NineTestApp/version.txt'
     - name: 'Deploy to Azure Web App'

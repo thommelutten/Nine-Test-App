@@ -4,7 +4,6 @@ using NineTestApp.WebUI;
 using Serilog;
 
 var configuration = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json")
         .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", true)
         .Build();
